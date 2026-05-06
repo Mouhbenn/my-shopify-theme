@@ -1,0 +1,188 @@
+{% comment %}
+  Tout Shop — Eco Values Section
+  Shows 3 brand pillars: Natural, Zero Waste, Carbon Neutral
+{% endcomment %}
+
+<section class="tout-eco-values" data-stagger data-stagger-delay="120">
+  <div class="tout-eco-values__inner page-width">
+
+    <div class="tout-eco-values__heading" data-animate="fade-up">
+      <span class="tag-pill">{{ section.settings.eyebrow | default: 'Our Promise' }}</span>
+      <h2>{{ section.settings.heading | default: 'Why Tout Shop?' }}</h2>
+      <p class="tout-eco-values__sub">{{ section.settings.subheading | default: 'Every product we make is a step toward a healthier planet.' }}</p>
+    </div>
+
+    <div class="tout-eco-values__grid">
+
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'value_item' %}
+            <div class="tout-eco-values__card" {{ block.shopify_attributes }}>
+              <div class="tout-eco-values__icon">
+                {{ block.settings.icon }}
+              </div>
+              <h3>{{ block.settings.title }}</h3>
+              <p>{{ block.settings.description }}</p>
+            </div>
+        {% endcase %}
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+<style>
+  .tout-eco-values {
+    padding: var(--space-xl) var(--space-md);
+    background: var(--color-cream);
+    border-top: 1px solid var(--color-sand);
+    border-bottom: 1px solid var(--color-sand);
+  }
+  .tout-eco-values__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .tout-eco-values__heading {
+    text-align: center;
+    margin-bottom: var(--space-xl);
+  }
+  .tout-eco-values__heading h2 {
+    font-family: var(--font-heading);
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: var(--color-forest);
+    margin: var(--space-sm) 0;
+  }
+  .tout-eco-values__sub {
+    color: var(--color-bark);
+    font-size: 1.05rem;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.65;
+  }
+  .tout-eco-values__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+  @media (min-width: 600px) {
+    .tout-eco-values__grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  .tout-eco-values__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-lg) var(--space-md);
+    background: var(--color-white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    transition: transform var(--duration-base) var(--ease-out-expo),
+                box-shadow var(--duration-base) var(--ease-out-expo);
+  }
+  .tout-eco-values__card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+  }
+  .tout-eco-values__icon {
+    font-size: 2.8rem;
+    margin-bottom: var(--space-md);
+    line-height: 1;
+  }
+  .tout-eco-values__card h3 {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    color: var(--color-forest);
+    margin: 0 0 var(--space-sm);
+  }
+  .tout-eco-values__card p {
+    color: var(--color-bark);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Eco Values",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow label",
+      "default": "Our Promise"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why Tout Shop?"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Every product we make is a step toward a healthier planet."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value_item",
+      "name": "Value item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji or SVG)",
+          "default": "🌱"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "100% Natural"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Every ingredient is sourced from nature — no synthetics, no compromise."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Eco Values",
+      "blocks": [
+        {
+          "type": "value_item",
+          "settings": {
+            "icon": "🌱",
+            "title": "100% Natural",
+            "description": "Every ingredient is sourced from nature — no synthetics, no compromise."
+          }
+        },
+        {
+          "type": "value_item",
+          "settings": {
+            "icon": "♻️",
+            "title": "Zero Waste",
+            "description": "Our packaging is fully recyclable or compostable. We’re proud of every box we ship."
+          }
+        },
+        {
+          "type": "value_item",
+          "settings": {
+            "icon": "🌍",
+            "title": "Carbon Neutral",
+            "description": "We offset 100% of our shipping emissions. Every order plants a tree."
+          }
+        }
+      ]
+    }
+  ],
+  "max_blocks": 6
+}
+{% endschema %}
