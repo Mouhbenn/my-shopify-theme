@@ -40,6 +40,9 @@
     {% comment %} Tout Shop — Eco Design System {% endcomment %}
     {{ 'tout-design-system.css' | asset_url | stylesheet_tag }}
 
+    {% comment %} Aurora Background {% endcomment %}
+    {{ 'aurora.css' | asset_url | stylesheet_tag }}
+
     {% if request.design_mode %}
       {%- render 'theme-editor' -%}
     {% endif %}
@@ -49,6 +52,9 @@
   </head>
 
   <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
+    <div class="aurora-bg" aria-hidden="true">
+      <div class="aurora-bg__inner"></div>
+    </div>
     {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
     <div id="header-group">
       {% sections 'header-group' %}
