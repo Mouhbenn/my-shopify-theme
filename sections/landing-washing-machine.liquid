@@ -1,0 +1,1048 @@
+{% comment %}
+  Landing page for the foldable mini washing machine product.
+  Assign up to 6 product images in the section settings.
+{% endcomment %}
+
+<style>
+  :root {
+    --lp-purple: #7c4dce;
+    --lp-purple-dark: #5a2fa3;
+    --lp-purple-light: #e8dcf8;
+    --lp-lavender: #c9b3ef;
+    --lp-cream: #faf8ff;
+    --lp-dark: #1a1030;
+    --lp-text: #2d1f4e;
+    --lp-muted: #7a6899;
+    --lp-white: #ffffff;
+    --lp-accent: #f0c040;
+  }
+
+  .lp-wrap * {
+    box-sizing: border-box;
+  }
+
+  .lp-wrap {
+    direction: rtl;
+    font-family: 'Cairo', 'Segoe UI', Arial, sans-serif;
+    color: var(--lp-text);
+    overflow: hidden;
+  }
+
+  /* ── HERO ── */
+  .lp-hero {
+    background: linear-gradient(145deg, #1a0e35 0%, #2d1a55 40%, #4a2a80 100%);
+    padding: 60px 24px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lp-hero::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    right: -120px;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,77,206,0.35) 0%, transparent 70%);
+  }
+
+  .lp-hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -80px;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,179,239,0.18) 0%, transparent 70%);
+  }
+
+  .lp-hero__badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: var(--lp-lavender);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 6px 18px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .lp-hero__title {
+    font-size: clamp(32px, 6vw, 64px);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.15;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .lp-hero__title span {
+    background: linear-gradient(90deg, #c9b3ef, #f0c040);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .lp-hero__sub {
+    font-size: clamp(15px, 2.5vw, 20px);
+    color: var(--lp-lavender);
+    margin-bottom: 32px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .lp-hero__pills {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .lp-hero__pill {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .lp-hero__img-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .lp-hero__img {
+    width: 100%;
+    border-radius: 24px 24px 0 0;
+    display: block;
+    filter: drop-shadow(0 -20px 60px rgba(124,77,206,0.5));
+  }
+
+  .lp-hero__img-placeholder {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background: rgba(255,255,255,0.06);
+    border-radius: 24px 24px 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.3);
+    font-size: 14px;
+  }
+
+  .lp-hero__cta {
+    margin-top: 32px;
+    position: relative;
+    z-index: 2;
+    padding-bottom: 48px;
+  }
+
+  /* ── SHARED ── */
+  .lp-section {
+    padding: 64px 24px;
+  }
+
+  .lp-section--alt {
+    background: var(--lp-cream);
+  }
+
+  .lp-section--dark {
+    background: var(--lp-dark);
+    color: #fff;
+  }
+
+  .lp-container {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .lp-section-label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--lp-purple);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  .lp-section--dark .lp-section-label {
+    color: var(--lp-lavender);
+  }
+
+  .lp-section-title {
+    font-size: clamp(26px, 4vw, 44px);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+
+  .lp-section-sub {
+    font-size: 16px;
+    color: var(--lp-muted);
+    margin-bottom: 40px;
+    max-width: 540px;
+  }
+
+  .lp-section--dark .lp-section-sub {
+    color: var(--lp-lavender);
+  }
+
+  /* ── BUTTONS ── */
+  .lp-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-size: 17px;
+    font-weight: 700;
+    padding: 16px 40px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .lp-btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .lp-btn--primary {
+    background: linear-gradient(135deg, #7c4dce, #a87de8);
+    color: #fff;
+    box-shadow: 0 8px 30px rgba(124,77,206,0.45);
+  }
+
+  .lp-btn--primary:hover {
+    box-shadow: 0 12px 40px rgba(124,77,206,0.6);
+  }
+
+  .lp-btn--outline {
+    background: transparent;
+    color: var(--lp-purple);
+    border: 2px solid var(--lp-purple);
+  }
+
+  /* ── FEATURES GRID ── */
+  .lp-features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .lp-feat {
+    background: #fff;
+    border-radius: 20px;
+    padding: 28px 24px;
+    box-shadow: 0 4px 20px rgba(124,77,206,0.1);
+    border: 1px solid rgba(124,77,206,0.1);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+
+  .lp-feat:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(124,77,206,0.18);
+  }
+
+  .lp-feat__icon {
+    font-size: 36px;
+    margin-bottom: 14px;
+  }
+
+  .lp-feat__title {
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--lp-text);
+    margin-bottom: 8px;
+  }
+
+  .lp-feat__desc {
+    font-size: 14px;
+    color: var(--lp-muted);
+    line-height: 1.6;
+  }
+
+  /* ── IMAGE GALLERY ── */
+  .lp-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  .lp-gallery__item {
+    border-radius: 20px;
+    overflow: hidden;
+    aspect-ratio: 1 / 1;
+    background: #f0ebfc;
+  }
+
+  .lp-gallery__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s;
+  }
+
+  .lp-gallery__item:hover img {
+    transform: scale(1.04);
+  }
+
+  /* ── WASH MODES ── */
+  .lp-modes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .lp-mode {
+    background: linear-gradient(135deg, #7c4dce, #a87de8);
+    border-radius: 20px;
+    padding: 28px 20px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(124,77,206,0.35);
+  }
+
+  .lp-mode__num {
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .lp-mode__unit {
+    font-size: 18px;
+    opacity: 0.8;
+  }
+
+  .lp-mode__label {
+    font-size: 14px;
+    font-weight: 600;
+    opacity: 0.9;
+    margin-top: 8px;
+    border-top: 1px solid rgba(255,255,255,0.25);
+    padding-top: 10px;
+  }
+
+  /* ── TEMPERATURE ── */
+  .lp-temps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+
+  .lp-temp {
+    border-radius: 20px;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lp-temp--40 { background: linear-gradient(135deg, #dbeafe, #bfdbfe); color: #1e3a5f; }
+  .lp-temp--60 { background: linear-gradient(135deg, #ede9fe, #ddd6fe); color: #3b0764; }
+  .lp-temp--80 { background: linear-gradient(135deg, #fce7f3, #fbcfe8); color: #500724; }
+
+  .lp-temp__deg {
+    font-size: 48px;
+    font-weight: 900;
+    line-height: 1;
+  }
+
+  .lp-temp__title {
+    font-size: 16px;
+    font-weight: 800;
+  }
+
+  .lp-temp__desc {
+    font-size: 13px;
+    opacity: 0.75;
+    line-height: 1.5;
+  }
+
+  .lp-temp__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 20px;
+    background: rgba(0,0,0,0.08);
+    align-self: flex-start;
+    margin-top: auto;
+  }
+
+  /* ── CAPACITY ── */
+  .lp-capacity__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
+  }
+
+  .lp-cap-item {
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px 14px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(124,77,206,0.08);
+    border: 1px solid rgba(124,77,206,0.1);
+  }
+
+  .lp-cap-item__emoji {
+    font-size: 28px;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .lp-cap-item__qty {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--lp-purple);
+    line-height: 1;
+  }
+
+  .lp-cap-item__label {
+    font-size: 12px;
+    color: var(--lp-muted);
+    margin-top: 4px;
+  }
+
+  /* ── COLORS ── */
+  .lp-colors {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+  }
+
+  .lp-color-card {
+    border-radius: 20px;
+    padding: 28px 22px;
+    text-align: center;
+    position: relative;
+    border: 2px solid transparent;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .lp-color-card:hover {
+    transform: translateY(-4px);
+  }
+
+  .lp-color-card--pink  { background: #fce4ec; color: #880e4f; }
+  .lp-color-card--white { background: #f5f5f5; color: #212121; border-color: #e0e0e0; }
+  .lp-color-card--purple { background: #ede7f6; color: #311b92; box-shadow: 0 8px 28px rgba(124,77,206,0.25); }
+
+  .lp-color-card__swatch {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    margin: 0 auto 14px;
+    border: 3px solid rgba(0,0,0,0.08);
+  }
+
+  .lp-color-card__swatch--pink   { background: #f48fb1; }
+  .lp-color-card__swatch--white  { background: #fafafa; border-color: #ddd; }
+  .lp-color-card__swatch--purple { background: #c9a8e8; }
+
+  .lp-color-card__name {
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 6px;
+  }
+
+  .lp-color-card__desc {
+    font-size: 13px;
+    opacity: 0.7;
+    line-height: 1.5;
+  }
+
+  .lp-color-card__badge {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: var(--lp-purple);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── DIMENSIONS ── */
+  .lp-dims {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .lp-dim-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 28px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(124,77,206,0.1);
+    border: 1px solid rgba(124,77,206,0.12);
+  }
+
+  .lp-dim-card__icon {
+    font-size: 40px;
+    margin-bottom: 12px;
+  }
+
+  .lp-dim-card__state {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--lp-purple);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .lp-dim-card__size {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--lp-text);
+    margin-bottom: 6px;
+  }
+
+  .lp-dim-card__note {
+    font-size: 13px;
+    color: var(--lp-muted);
+  }
+
+  /* ── CTA STRIP ── */
+  .lp-cta-strip {
+    background: linear-gradient(135deg, #5a2fa3 0%, #7c4dce 50%, #a87de8 100%);
+    padding: 72px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .lp-cta-strip::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .lp-cta-strip__kicker {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: var(--lp-lavender);
+    text-transform: uppercase;
+    margin-bottom: 14px;
+    position: relative;
+  }
+
+  .lp-cta-strip__title {
+    font-size: clamp(28px, 5vw, 52px);
+    font-weight: 900;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .lp-cta-strip__sub {
+    font-size: 17px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 36px;
+    position: relative;
+  }
+
+  .lp-cta-strip__free {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 22px;
+    border-radius: 30px;
+    margin-top: 18px;
+    position: relative;
+  }
+
+  .lp-cta-strip__btn-wrap {
+    position: relative;
+  }
+
+  /* ── TRUST BAR ── */
+  .lp-trust {
+    background: #fff;
+    border-top: 1px solid rgba(124,77,206,0.1);
+    padding: 32px 24px;
+  }
+
+  .lp-trust__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 32px;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .lp-trust__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--lp-text);
+  }
+
+  .lp-trust__item span:first-child {
+    font-size: 22px;
+  }
+
+  /* ── STICKY BAR ── */
+  .lp-sticky {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: #fff;
+    box-shadow: 0 -4px 24px rgba(0,0,0,0.12);
+    padding: 14px 24px;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    direction: rtl;
+  }
+
+  .lp-sticky__name {
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--lp-text);
+  }
+
+  .lp-sticky__free {
+    font-size: 12px;
+    color: var(--lp-purple);
+    font-weight: 600;
+  }
+
+  @media (max-width: 600px) {
+    .lp-modes { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .lp-mode__num { font-size: 34px; }
+    .lp-dims { grid-template-columns: 1fr 1fr; }
+    .lp-sticky__name { font-size: 13px; }
+  }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+<div class="lp-wrap">
+
+  {%- comment -%} ── HERO ── {%- endcomment -%}
+  <section class="lp-hero">
+    <div class="lp-hero__badge">✨ الأكثر مبيعاً • شحن مجاني</div>
+    <h1 class="lp-hero__title">
+      الغسالة المحمولة<br>
+      <span>الذكية القابلة للطي</span>
+    </h1>
+    <p class="lp-hero__sub">الغسيل المنزلي... بسيط وسريع وأنيق</p>
+
+    <div class="lp-hero__pills">
+      <span class="lp-hero__pill">📦 قابلة للطي</span>
+      <span class="lp-hero__pill">⚡ تحكم ذكي بلمسة</span>
+      <span class="lp-hero__pill">✈️ مثالية للسفر</span>
+      <span class="lp-hero__pill">🛡️ مواد آمنة</span>
+    </div>
+
+    <div class="lp-hero__img-wrap">
+      {%- if section.settings.image_hero != blank -%}
+        <img
+          class="lp-hero__img"
+          src="{{ section.settings.image_hero | image_url: width: 960 }}"
+          alt="غسالة قابلة للطي"
+          width="480"
+          height="480"
+          loading="eager"
+        >
+      {%- else -%}
+        <div class="lp-hero__img-placeholder">أضف صورة المنتج من إعدادات القسم</div>
+      {%- endif -%}
+    </div>
+
+    <div class="lp-hero__cta">
+      <a href="{{ section.settings.cta_link }}" class="lp-btn lp-btn--primary">
+        🛒 اشتري الآن
+      </a>
+    </div>
+  </section>
+
+  {%- comment -%} ── TRUST BAR ── {%- endcomment -%}
+  <div class="lp-trust">
+    <div class="lp-trust__inner">
+      <div class="lp-trust__item"><span>🚚</span><span>شحن مجاني لجميع الطلبات</span></div>
+      <div class="lp-trust__item"><span>🔇</span><span>تشغيل هادئ جداً</span></div>
+      <div class="lp-trust__item"><span>🦠</span><span>قتل 99% من البكتيريا</span></div>
+      <div class="lp-trust__item"><span>💧</span><span>موفرة للماء والطاقة</span></div>
+    </div>
+  </div>
+
+  {%- comment -%} ── FEATURES ── {%- endcomment -%}
+  <section class="lp-section lp-section--alt">
+    <div class="lp-container">
+      <p class="lp-section-label">لماذا تختارها؟</p>
+      <h2 class="lp-section-title">ميزات تجعلها لا غنى عنها</h2>
+      <p class="lp-section-sub">صُممت لتناسب حياتك اليومية — في البيت، في السفر، في كل مكان</p>
+
+      <div class="lp-features">
+        <div class="lp-feat">
+          <div class="lp-feat__icon">📦</div>
+          <div class="lp-feat__title">قابلة للطي</div>
+          <div class="lp-feat__desc">تُطوى بالكامل لتوفير المساحة وتناسب حقيبة السفر بسهولة تامة</div>
+        </div>
+        <div class="lp-feat">
+          <div class="lp-feat__icon">⚡</div>
+          <div class="lp-feat__title">تشغيل بلمسة</div>
+          <div class="lp-feat__desc">لوحة تحكم حساسة باللمس — اضغط مطولاً للتشغيل أو الإيقاف</div>
+        </div>
+        <div class="lp-feat">
+          <div class="lp-feat__icon">✈️</div>
+          <div class="lp-feat__title">مثالية للسفر</div>
+          <div class="lp-feat__desc">خفيفة الوزن وسهلة الحمل — رفيقتك المثالية في كل رحلة</div>
+        </div>
+        <div class="lp-feat">
+          <div class="lp-feat__icon">🛡️</div>
+          <div class="lp-feat__title">مواد آمنة</div>
+          <div class="lp-feat__desc">مصنوعة من مواد عالية الجودة وآمنة تماماً على ملابس الأطفال</div>
+        </div>
+        <div class="lp-feat">
+          <div class="lp-feat__icon">🔇</div>
+          <div class="lp-feat__title">صامتة تقريباً</div>
+          <div class="lp-feat__desc">تقليل الضوضاء بنسبة 80% — تعمل دون إزعاج أي فرد من العائلة</div>
+        </div>
+        <div class="lp-feat">
+          <div class="lp-feat__icon">🌱</div>
+          <div class="lp-feat__title">صديقة للبيئة</div>
+          <div class="lp-feat__desc">استهلاك أقل للماء والكهرباء مقارنة بالغسالات التقليدية</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ── GALLERY ── {%- endcomment -%}
+  {%- assign has_gallery = false -%}
+  {%- for i in (1..5) -%}
+    {%- assign img_key = 'image_gallery_' | append: i -%}
+    {%- if section.settings[img_key] != blank -%}
+      {%- assign has_gallery = true -%}
+    {%- endif -%}
+  {%- endfor -%}
+
+  {%- if has_gallery -%}
+  <section class="lp-section">
+    <div class="lp-container">
+      <p class="lp-section-label">صور المنتج</p>
+      <h2 class="lp-section-title">شاهديها من كل زاوية</h2>
+      <div class="lp-gallery">
+        {%- for i in (1..5) -%}
+          {%- assign img_key = 'image_gallery_' | append: i -%}
+          {%- if section.settings[img_key] != blank -%}
+            <div class="lp-gallery__item">
+              <img
+                src="{{ section.settings[img_key] | image_url: width: 600 }}"
+                alt="صورة المنتج {{ i }}"
+                loading="lazy"
+              >
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+  </section>
+  {%- endif -%}
+
+  {%- comment -%} ── WASH MODES ── {%- endcomment -%}
+  <section class="lp-section lp-section--dark">
+    <div class="lp-container">
+      <p class="lp-section-label">أوضاع الغسيل</p>
+      <h2 class="lp-section-title">3 أوضاع لكل احتياجاتك</h2>
+      <p class="lp-section-sub">حجم صغير مع وظائف كاملة — تنظيف سريع وفعال في دقائق</p>
+
+      <div class="lp-modes">
+        <div class="lp-mode">
+          <div class="lp-mode__num">10<span class="lp-mode__unit"> دق</span></div>
+          <div class="lp-mode__label">غسيل عادي</div>
+        </div>
+        <div class="lp-mode" style="background: linear-gradient(135deg, #9c6dde, #c4a0f0);">
+          <div class="lp-mode__num">15<span class="lp-mode__unit"> دق</span></div>
+          <div class="lp-mode__label">غسيل ناعم</div>
+        </div>
+        <div class="lp-mode" style="background: linear-gradient(135deg, #5a2fa3, #7c4dce);">
+          <div class="lp-mode__num">2<span class="lp-mode__unit"> دق</span></div>
+          <div class="lp-mode__label">إزالة الرطوبة</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ── TEMPERATURE ── {%- endcomment -%}
+  <section class="lp-section lp-section--alt">
+    <div class="lp-container">
+      <p class="lp-section-label">تقنية التدفئة الذكية</p>
+      <h2 class="lp-section-title">3 درجات حرارة للتنظيف العميق</h2>
+      <p class="lp-section-sub">نظافة تامة وصحة كاملة — قتل الجراثيم وحماية ملابس طفلك</p>
+
+      <div class="lp-temps">
+        <div class="lp-temp lp-temp--40">
+          <div class="lp-temp__deg">40°</div>
+          <div class="lp-temp__title">إزالة البقع العادية</div>
+          <div class="lp-temp__desc">مناسب للاستخدام اليومي وإزالة الأوساخ الخفيفة بفعالية</div>
+          <div class="lp-temp__badge">🫧 غسيل يومي</div>
+        </div>
+        <div class="lp-temp lp-temp--60">
+          <div class="lp-temp__deg">60°</div>
+          <div class="lp-temp__title">تنظيف قوي للبقع</div>
+          <div class="lp-temp__desc">فعال على بقع الحليب والزيت وبقع الطعام العنيدة</div>
+          <div class="lp-temp__badge">💪 تنظيف قوي</div>
+        </div>
+        <div class="lp-temp lp-temp--80">
+          <div class="lp-temp__deg">80°</div>
+          <div class="lp-temp__title">قتل الجراثيم والبكتيريا</div>
+          <div class="lp-temp__desc">يتعمق في الألياف ويقضي على 99% من البكتيريا والجراثيم</div>
+          <div class="lp-temp__badge">🦠 يقتل 99% جرثوم</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ── CAPACITY ── {%- endcomment -%}
+  <section class="lp-section">
+    <div class="lp-container">
+      <p class="lp-section-label">الطاقة الاستيعابية</p>
+      <h2 class="lp-section-title">طاقة مذهلة في حجم صغير!</h2>
+      <p class="lp-section-sub">تنظيف عميق لكل أنواع الملابس — ماذا يمكنها غسله؟</p>
+
+      <div class="lp-capacity__grid">
+        <div class="lp-cap-item">
+          <span class="lp-cap-item__emoji">🧸</span>
+          <div class="lp-cap-item__qty">4</div>
+          <div class="lp-cap-item__label">ألعاب صغيرة</div>
+        </div>
+        <div class="lp-cap-item">
+          <span class="lp-cap-item__emoji">👕</span>
+          <div class="lp-cap-item__qty">2</div>
+          <div class="lp-cap-item__label">تيشيرت</div>
+        </div>
+        <div class="lp-cap-item">
+          <span class="lp-cap-item__emoji">🧦</span>
+          <div class="lp-cap-item__qty">12</div>
+          <div class="lp-cap-item__label">جوربة</div>
+        </div>
+        <div class="lp-cap-item">
+          <span class="lp-cap-item__emoji">🩲</span>
+          <div class="lp-cap-item__qty">8</div>
+          <div class="lp-cap-item__label">ملابس داخلية</div>
+        </div>
+        <div class="lp-cap-item">
+          <span class="lp-cap-item__emoji">👶</span>
+          <div class="lp-cap-item__qty">8</div>
+          <div class="lp-cap-item__label">ملابس أطفال</div>
+        </div>
+        <div class="lp-cap-item">
+          <span class="lp-cap-item__emoji">🩱</span>
+          <div class="lp-cap-item__qty">6</div>
+          <div class="lp-cap-item__label">بدلات</div>
+        </div>
+        <div class="lp-cap-item">
+          <span class="lp-cap-item__emoji">🧴</span>
+          <div class="lp-cap-item__qty">15</div>
+          <div class="lp-cap-item__label">منشفة صغيرة</div>
+        </div>
+        <div class="lp-cap-item">
+          <span class="lp-cap-item__emoji">🛁</span>
+          <div class="lp-cap-item__qty">1</div>
+          <div class="lp-cap-item__label">منشفة حمام</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ── COLORS ── {%- endcomment -%}
+  <section class="lp-section lp-section--alt">
+    <div class="lp-container">
+      <p class="lp-section-label">الألوان المتاحة</p>
+      <h2 class="lp-section-title">اختري لونك المفضل!</h2>
+      <p class="lp-section-sub">متاحة بثلاثة ألوان أنيقة تناسب كل ذوق</p>
+
+      <div class="lp-colors">
+        <div class="lp-color-card lp-color-card--pink">
+          <div class="lp-color-card__swatch lp-color-card__swatch--pink"></div>
+          <div class="lp-color-card__name">🌸 الزهري</div>
+          <div class="lp-color-card__desc">تصميم أنيق ورقيق يعكس الأناقة والجمال</div>
+        </div>
+        <div class="lp-color-card lp-color-card--white">
+          <div class="lp-color-card__swatch lp-color-card__swatch--white"></div>
+          <div class="lp-color-card__name">⚪ الأبيض</div>
+          <div class="lp-color-card__desc">نظيف وعصري يناسب كل ديكور منزلي</div>
+        </div>
+        <div class="lp-color-card lp-color-card--purple">
+          <div class="lp-color-card__badge">⭐ الأكثر مبيعاً</div>
+          <div class="lp-color-card__swatch lp-color-card__swatch--purple"></div>
+          <div class="lp-color-card__name">💜 البنفسجي</div>
+          <div class="lp-color-card__desc">الأكثر مبيعاً — راقٍ وعصري بامتياز</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ── DIMENSIONS ── {%- endcomment -%}
+  <section class="lp-section">
+    <div class="lp-container">
+      <p class="lp-section-label">خذيها معك في أي مكان</p>
+      <h2 class="lp-section-title">تنطوي لتناسب حقيبة السفر</h2>
+      <p class="lp-section-sub">مثالية للسفر والشقق الصغيرة — توفير المساحة عند الحاجة</p>
+
+      <div class="lp-dims">
+        <div class="lp-dim-card">
+          <div class="lp-dim-card__icon">📐</div>
+          <div class="lp-dim-card__state">مفتوحة</div>
+          <div class="lp-dim-card__size">28.5 × 28 × 28 سم</div>
+          <div class="lp-dim-card__note">حجم مناسب للاستخدام اليومي</div>
+        </div>
+        <div class="lp-dim-card">
+          <div class="lp-dim-card__icon">🧳</div>
+          <div class="lp-dim-card__state">مطوية</div>
+          <div class="lp-dim-card__size">13 × 28 × 28 سم</div>
+          <div class="lp-dim-card__note">تدخل في حقيبة السفر بسهولة</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  {%- comment -%} ── CTA STRIP ── {%- endcomment -%}
+  <section class="lp-cta-strip">
+    <p class="lp-cta-strip__kicker">عرض محدود</p>
+    <h2 class="lp-cta-strip__title">اطلبيها الآن واستمتعي<br>بالغسيل الذكي!</h2>
+    <p class="lp-cta-strip__sub">{{ section.settings.cta_subtitle | default: 'جودة استثنائية • ضمان الرضا • شحن سريع' }}</p>
+    <div class="lp-cta-strip__btn-wrap">
+      <a href="{{ section.settings.cta_link }}" class="lp-btn lp-btn--primary" style="background: #fff; color: var(--lp-purple);">
+        🛒 اشتري الآن
+      </a>
+    </div>
+    <div class="lp-cta-strip__free">✅ شحن مجاني لجميع الطلبات</div>
+  </section>
+
+</div>
+
+{%- comment -%} ── STICKY ADD-TO-CART ── {%- endcomment -%}
+<div class="lp-sticky" id="lp-sticky-bar">
+  <div>
+    <div class="lp-sticky__name">الغسالة المحمولة القابلة للطي</div>
+    <div class="lp-sticky__free">🚚 شحن مجاني</div>
+  </div>
+  <a href="{{ section.settings.cta_link }}" class="lp-btn lp-btn--primary" style="font-size:14px; padding: 12px 24px;">
+    اشتري الآن
+  </a>
+</div>
+
+<script>
+  (function () {
+    var hero = document.querySelector('.lp-hero__cta');
+    var sticky = document.getElementById('lp-sticky-bar');
+    if (!hero || !sticky) return;
+    var observer = new IntersectionObserver(function (entries) {
+      sticky.style.display = entries[0].isIntersecting ? 'none' : 'flex';
+    }, { threshold: 0.1 });
+    observer.observe(hero);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Landing – Washing Machine",
+  "tag": "section",
+  "class": "lp-section-wrap",
+  "settings": [
+    {
+      "type": "header",
+      "content": "الصور"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_hero",
+      "label": "صورة الهيرو (الرئيسية)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_gallery_1",
+      "label": "صورة المعرض 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_gallery_2",
+      "label": "صورة المعرض 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_gallery_3",
+      "label": "صورة المعرض 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_gallery_4",
+      "label": "صورة المعرض 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_gallery_5",
+      "label": "صورة المعرض 5"
+    },
+    {
+      "type": "header",
+      "content": "زر الشراء"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "رابط الشراء",
+      "default": "/cart"
+    },
+    {
+      "type": "text",
+      "id": "cta_subtitle",
+      "label": "نص تحت زر الشراء",
+      "default": "جودة استثنائية • ضمان الرضا • شحن سريع"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Landing – Washing Machine"
+    }
+  ]
+}
+{% endschema %}

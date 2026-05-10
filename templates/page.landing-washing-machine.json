@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "landing-main": {
+      "type": "landing-washing-machine",
+      "settings": {
+        "cta_link": "/cart",
+        "cta_subtitle": "جودة استثنائية • ضمان الرضا • شحن سريع"
+      }
+    }
+  },
+  "order": [
+    "landing-main"
+  ]
+}
